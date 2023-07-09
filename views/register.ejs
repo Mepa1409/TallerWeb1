@@ -1,0 +1,71 @@
+<%- include('./templates/header.ejs') %>
+
+<body>
+<%- include('./templates/nav.ejs') %>
+<div class="container">
+    <h3 class="text-center">Pagina de Registro</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="rounded-3 sizeDiv">
+                <form action="/registerClient" method="post">
+                    <legend>Ingrese Los Datos Del Cliente..</legend>
+                    <div class="mb-3">
+                        <label for="InputId" class="form-label">Numero De Cedula</label>
+                        <input type="number" id="InputId" name="InputId" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputName" class="form-label">Nombre</label>
+                        <input type="text" id="InputName" name="InputName" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputLastName" class="form-label">Apellido</label>
+                        <input type="text" id="InputLastName" name="InputLastName" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputPhone" class="form-label">Celular</label>
+                        <input type="number" id="InputPhone" name="InputPhone" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputAdress" class="form-label">Dirección</label>
+                        <input type="text" id="InputAdress" name="InputAdress" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrar Cliente</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="sizeDiv">
+                <form action="/registerCar" method="post">
+                    <legend>Ingrese Los Datos Del Automovil..</legend>
+                    <div class="mb-3">
+                        <label for="InputIdCar" class="form-label">Id</label>
+                        <input type="number" id="InputIdCar" name="InputIdCar" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputBrand" class="form-label">Marca</label>
+                        <input type="text" id="InputBrand" name="InputBrand" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputValue" class="form-label">Precio</label>
+                        <input type="number" id="InputValue" name="InputValue" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputColor" class="form-label">Color</label>
+                        <input type="text" id="InputColor" name="InputColor" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputModel" class="form-label">Modelo</label>
+                        <input type="number" id="InputModel" name="InputModel" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary ">Registrar Vehiculo</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include('./templates/Footer.ejs') %>
+</body>
+
+</html>

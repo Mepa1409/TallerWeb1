@@ -1,0 +1,32 @@
+body {
+    min-height: 100px;
+    background: url(../img/fondo.png), -webkit-gradient(linear, right top, left top, from(#4463af), to(#5a8ecf));
+    font-family: "Times New Roman", serif;
+    font-size: 19px;
+}
+
+.background-image {
+    background-image: url('../img/blue.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+
+.gray-background{
+    background-color: #ECECEC;
+}
+
+
+.blue-light-background{
+    background-color: #74a7db;
+}
+
+
+.sizeDiv {
+    !important;
+    width: 85%;
+    height: 70%;
+    padding-left: 20%;
+    padding-top: 5%;
+
+}

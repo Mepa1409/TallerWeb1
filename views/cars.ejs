@@ -1,0 +1,40 @@
+<%- include('./templates/header.ejs') %>
+<body>
+<%- include('./templates/nav.ejs') %>
+
+<% if (data.size > 0){ %>
+    <div class="container p-3">
+        <div class="table-responsive-sm">
+            <table class="table table-bordered table-striped mb-3" id="tableData">
+                <thead>
+                <tr class="text-center">
+                    <th scope="col">Id</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Modelo</th>
+
+                </tr>
+                </thead>
+                <tbody id="tBody">
+                <% for (const [key, value] of data){ %>
+                    <tr>
+                        <td><%= key %></td>
+                        <td><%= value.brand %></td>
+                        <td><%= value.value %></td>
+                        <td><%= value.color %></td>
+                        <td><%= value.model %></td>
+
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<% } else { %>
+    <h4> No hay datos </h4>
+<% } %>
+
+<%- include('./templates/Footer.ejs') %>
+</body>
+</html>

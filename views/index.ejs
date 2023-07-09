@@ -1,0 +1,46 @@
+<%- include('./templates/header.ejs') %>
+<body>
+<div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="container h-50 w-75">
+        <div class="row h-100">
+            <div class="shadow-lg p-1 mb-2 rounded col-md-6 h-100 background-image">
+                <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                    <div class=" h-100 w-100">
+                        <div class="text-white text-center mt-5 ">
+                            <h3 class="mb-3">Description</h3>
+                            <p>Bienvenido a nuestro sistema </p>
+
+                            <p> Nuestra aplicación web permite consultar información de clientes y autos de manera
+                                rápida y eficiente. Accede a datos personales, detalles del
+                                vehículo y más.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="shadow-lg p-3 mb-2 rounded col-md-6 h-100 bg-white">
+                <div class="d-flex flex-column align-items-center justify-content-center h-100  w-100 ">
+                    <form action="/dashBoard" method="post">
+                        <legend class="text-primary text-center mb-3">Login Account</legend>
+                        <div class="mb-3">
+                            <label for="inputUser" class="form-label text-black">Username</label>
+                            <input type="text" id="inputUser" name="inputUser" class="form-control"
+                                   placeholder="Username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPassword" class="form-label">Password</label>
+                            <input type="password" id="inputPassword" name="inputPassword" class="form-control"
+                                   placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script href="./../resource/user.js"></script>
+<%- include('./templates/Footer.ejs') %>
+</body>
+</html>

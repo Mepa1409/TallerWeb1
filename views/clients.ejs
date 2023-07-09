@@ -1,0 +1,40 @@
+<%- include('./templates/header.ejs') %>
+<body>
+<%- include('./templates/nav.ejs') %>
+
+<% if (data.size > 0){ %>
+    <div class="container p-3 ">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped mb-3  " id="tableData">
+                <thead>
+                <tr class="text-center ">
+                    <th scope="col">Cedula</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Direccion</th>
+
+                </tr>
+                </thead>
+                <tbody id="tBody">
+                <% for (const [key, value] of data){ %>
+                    <tr>
+                        <td><%= key %></td>
+                        <td><%= value.name %></td>
+                        <td><%= value.lastname %></td>
+                        <td><%= value.phone %></td>
+                        <td><%= value.address %></td>
+
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<% } else { %>
+    <h4> No hay datos </h4>
+<% } %>
+
+<%- include('./templates/Footer.ejs') %>
+</body>
+</html>
