@@ -13,9 +13,9 @@ para ejecutar estar en la carpeta del proyecto e ingresar el comando: node app.j
 - "dotenv": "^16.0.1"
 - "nodemon": "^2.0.22"
 
-### Consderaciones
-para el ingreso puede usar como username: admin y password: 12345 ó username: admin1 y password: 54321
-Recuerde tener instalado Node.js y las dependencias pertiententes como express y ejs . Para ello puede hacer uso de comandos como: npm install
+### Consideraciones
+* Para el ingreso puede usar como username: admin y password: 12345 ó username: admin1 y password: 54321
+* Recuerde tener instalado Node.js y las dependencias pertiententes como express y ejs . Para ello puede hacer uso de comandos como: npm install
  
 
 #### Autor: 
