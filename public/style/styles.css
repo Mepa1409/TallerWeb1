@@ -1,8 +1,9 @@
 body {
     min-height: 100px;
-    background: url(../img/fondo.png), -webkit-gradient(linear, right top, left top, from(#4463af), to(#5a8ecf));
+    background: url(../img/fondo.png), -webkit-gradient(linear, right top, left top, from(#404040), to(#6D6D6D));
     font-family: "Times New Roman", serif;
     font-size: 19px;
+    color: #fff;
 }
 
 .background-image {
@@ -18,7 +19,7 @@ body {
 
 
 .blue-light-background{
-    background-color: #74a7db;
+    background-color: #DEDEDE;
 }
 
 

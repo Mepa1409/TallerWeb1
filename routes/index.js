@@ -4,11 +4,15 @@ const fs = require('fs');
 const path = require('path');
 const {user} = require('./../resource/user')
 const {client} = require('./../resource/client')
+const {addClient} = require('./../resource/client')
+const {deleteCliente} = require('./../resource/client')
 const {cars} = require('./../resource/cars')
+const {addCars} = require('./../resource/cars')
+const {deleteCar} = require("../resource/cars");
 const filePath = path.join(__dirname, '..', 'data', 'customer.json');
 const filePathCars = path.join(__dirname, '..', 'data', 'automovil.json');
 
-//console.log(user)
+
 routes.get('/', (req, res) => {
     res.render('index.ejs', {title: 'Login'})
 })
@@ -76,7 +80,7 @@ routes.get('/clients', (req, res) => {
 routes.get('/cars', (req, res) => {
     if (req.session.loggedIn) {
         res.render('cars.ejs', {title: 'Lista De Autos', data: cars})
-    }else {
+    } else {
         res.redirect('/')
     }
 })
@@ -84,116 +88,100 @@ routes.get('/cars', (req, res) => {
 
 routes.post('/registerClient', (req, res) => {
     const {InputId, InputName, InputLastName, InputPhone, InputAdress} = req.body
-
     client.set(InputId, {'name': InputName, 'lastname': InputLastName, 'phone': InputPhone, 'address': InputAdress})
-
-    // Leer el contenido actual del archivo JSON
-    const jsonContent = fs.readFileSync(filePath, 'utf8');
-    const data = JSON.parse(jsonContent);
-
-// Parsear el contenido JSON a un objeto JavaScript
-
-// Obtener el objeto "customer" del JSON
-    const customerObject = data.customer;
-
-    // Agregar el nuevo registro al objeto 'data'
-    customerObject[InputId] = {
-        name: InputName,
-        lastname: InputLastName,
-        phone: InputPhone,
-        address: InputAdress
-    };
-
-    // Convertir el objeto 'data' en una cadena JSON
-    const updatedJsonContent = JSON.stringify(data, null, 2);
-
-    // Escribir el contenido actualizado en el archivo JSON
-    fs.writeFileSync(filePath, updatedJsonContent, 'utf8');
+    addClient()
 
     if (req.session.loggedIn) {
         res.redirect('/dashBoard')
-    }else{
+    } else {
         res.redirect('/')
     }
 })
 routes.post('/registerCar', (req, res) => {
     const {InputIdCar, InputBrand, InputValue, InputColor, InputModel} = req.body
-
     cars.set(InputIdCar, {'brand': InputBrand, 'value': InputValue, 'color': InputColor, 'model': InputModel})
+    addCars()
 
-    // Leer el contenido actual del archivo JSON
-    const jsonContent = fs.readFileSync(filePathCars, 'utf8');
-    const data = JSON.parse(jsonContent);
-
-// Parsear el contenido JSON a un objeto JavaScript
-
-// Obtener el objeto "cars" del JSON
-    const customerObject = data.cars;
-
-    // Agregar el nuevo registro al objeto 'data'
-    customerObject[InputIdCar] = {
-        brand: InputBrand,
-        value: InputValue,
-        color: InputColor,
-        model: InputModel
-    };
-
-    // Convertir el objeto 'data' en una cadena JSON
-    const updatedJsonContent = JSON.stringify(data, null, 2);
-
-    // Escribir el contenido actualizado en el archivo JSON
-    fs.writeFileSync(filePathCars, updatedJsonContent, 'utf8');
-
-    res.redirect('/dashBoard')
+   if (req.session.loggedIn) {
+        res.redirect('/dashBoard')
+    } else {
+        res.redirect('/')
+    }
 })
 
 
 routes.get('/consult1', (req, res) => {
     if (req.session.loggedIn) {
-      res.render('consult1.ejs', { title: 'Buscar Cliente' , data:client } );
+        res.render('consult1.ejs', {title: 'Buscar Cliente', data: client});
     } else {
-      res.redirect('/');
+        res.redirect('/');
     }
-  });
-  
-  routes.post('/newConsult', (req, res) => {
+});
+
+routes.get('/consultCar', (req, res) => {
     if (req.session.loggedIn) {
-      const { searchId } = req.body;
-      
-      const jsonContent = fs.readFileSync(filePath, 'utf8');
-      const data = JSON.parse(jsonContent);
-  
-      const customer = data.customer[searchId];
-      
-
-
-      if (customer) {
-        res.render('consult1.ejs', { title: 'Buscar Cliente', data:customer, id:searchId});
-        
-      } else {
-        res.render('consult1.ejs', { title: 'Buscar Cliente', error: 'Cliente no encontrado' });
-      
-      }
+        res.render('consultCar.ejs', {title: 'Buscar Vehiculo', data: cars});
     } else {
-      res.redirect('/');
+        res.redirect('/');
     }
-  });
+});
 
-  routes.post('/deleteCustomer', (req, res) => {
+routes.post('/newConsult', (req, res) => {
     if (req.session.loggedIn) {
-      const { idcliente } = req.body;
-      console.log(idcliente)
-      const jsonContent = fs.readFileSync(filePath, 'utf8');
-      const data = JSON.parse(jsonContent);
-  
-      const customer = data.customer[idcliente];
-      delete data.customer[idcliente];
-      const updatedJsonContent = JSON.stringify(data, null, 2);
-      fs.writeFileSync(filePath, updatedJsonContent, 'utf8');
-      res.redirect('/newConsult');
+        const {searchId} = req.body;
+        const jsonContent = fs.readFileSync(filePath, 'utf8');
+        const data = JSON.parse(jsonContent);
+        const customer = data.customer[searchId];
+
+        if (customer) {
+            res.render('consult1.ejs', {title: 'Buscar Cliente', data: customer, id: searchId});
+        } else {
+            res.render('consult1.ejs', {title: 'Buscar Cliente', error: 'Cliente no encontrado'});
+        }
+    } else {
+        res.redirect('/');
     }
-  
-  }
-  )
+});
+
+routes.post('/newConsultCar', (req, res) => {
+    if (req.session.loggedIn) {
+        const {searchIdCar} = req.body;
+        const jsonContent = fs.readFileSync(filePathCars, 'utf8');
+        const data = JSON.parse(jsonContent);
+        const carss = data.cars[searchIdCar];
+
+        if (carss) {
+            res.render('consultCar.ejs', {title: 'Buscar Vehiculo', data: carss, id: searchIdCar});
+        } else {
+            res.render('consultCar.ejs', {title: 'Buscar Vehiculo', error: 'Vehiculo no encontrado'});
+        }
+    } else {
+        res.redirect('/');
+    }
+});
+
+routes.post('/deleteCustomer', (req, res) => {
+    if (req.session.loggedIn) {
+        const {idcliente} = req.body;
+        console.log(idcliente)
+        deleteCliente(idcliente)
+
+        res.redirect('/newConsult');
+    } else {
+        res.redirect('/')
+    }
+})
+
+routes.post('/deleteCar', (req, res) => {
+    if (req.session.loggedIn) {
+        const {idCar} = req.body;
+        console.log("idcar :", idCar)
+        deleteCar(idCar)
+
+        res.redirect('/newConsult');
+    } else {
+        res.redirect('/')
+    }
+})
 
 module.exports = routes

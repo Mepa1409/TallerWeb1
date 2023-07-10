@@ -1,23 +1,62 @@
 <%- include('./templates/header.ejs') %>
+
 <body>
 <%- include('./templates/nav.ejs') %>
+<div class="d-flex  justify-content-center vh-100">
+    <div class="container p-4">
 
-<form class="text-white">
-   
-</form>
-<br>
-<br>
-<a class="btn btn-primary" href="/consult1">Buscar Cliente</a>
-<br>
-<br>
-<br>
-<a class="btn btn-primary" href="/clients">Mostrar Lista Clientes</a>
-<br>
-<br>
-<a class="btn btn-primary" href="/cars">Mostrar Lista Autos</a>
-
-
-
-<%- include('./templates/Footer.ejs') %>
+        <h3 class="text-center">Pagina de Consulta</h3>
+        <br>
+        <div class="row">
+            <div class="col-xl-3 col-md-6 col-sm-12">
+                <div class="mb-6 text-center">
+                    <a class="btn btn-success" href="/consult1">Buscar Cliente</a>
+                    <p>
+                        <br>
+                        Al hacer clic en el botón de búsqueda de clientes, se abrirá una interfaz donde podrás ingresar
+                        los datos relevantes del cliente que deseas encontrar, como su nombre, número de contacto o
+                        cualquier otra información identificativa.
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 col-sm-12">
+                <div class="mb-6 text-center">
+                    <a class="btn btn-success" href="/consultCar">Buscar Vehiculo</a>
+                    <p>
+                        <br>
+                        Al hacer clic en el botón de búsqueda de vehículos, se abrirá una interfaz donde podrás ingresar
+                        los datos relevantes del automóvil que deseas buscar, como su marca, modelo, año o cualquier
+                        otra característica identificativa.
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 col-sm-12">
+                <div class="mb-6 text-center">
+                    <a class="btn btn-success" href="/clients">Mostrar Lista Clientes</a>
+                    <p>
+                        <br>
+                        Al hacer clic en el botón "Mostrar todos los clientes", el sistema generará una vista que
+                        presenta una lista detallada de todos los clientes almacenados. Esta lista puede
+                        incluir información como nombres, direcciones y cualquier otra información
+                        relevante que hayas registrado para cada cliente.
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 col-sm-12">
+                <div class="mb-6 text-center">
+                    <a class="btn btn-success" href="/cars">Mostrar Lista Vehiculos</a>
+                    <p>
+                        <br>
+                        Al hacer clic en el botón "Mostrar vehículos", el sistema generará una vista que presenta una
+                        lista detallada de todos los automóviles registrados en tu sistema. Esta lista puede incluir
+                        información como la marca, modelo, año, características específicas y precios de cada vehículo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include('./templates/Footer.ejs') %>
 </body>
+
 </html>

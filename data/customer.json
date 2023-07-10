@@ -1,5 +1,17 @@
 {
   "customer": {
+    "12345": {
+      "name": "Maria Camila",
+      "lastname": "Fuentes C",
+      "phone": "1234322323",
+      "address": "Calle 4 # 4-45"
+    },
+    "133223": {
+      "name": "Margarita",
+      "lastname": "Martinez",
+      "phone": "5353535",
+      "address": "calller 5 # 34-2"
+    },
     "56654653": {
       "name": "Cristian",
       "lastname": "Cordoba",
