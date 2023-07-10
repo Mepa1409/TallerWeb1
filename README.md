@@ -3,7 +3,7 @@
 ### Despliegue
 
 En este host y puerto esta corriendo el proyecto: http://localhost:3005
-para ejecutar estar en la carpeta del proyecto e ingresar el comando: node app.js
+para ejecutar estar en la carpeta del proyecto e ingresar el comando: node app.js ó nodemon start
 
 ### Dependencias utilizadas
 
